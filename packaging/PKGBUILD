@@ -1,0 +1,41 @@
+# Maintainer: Nicolas Mommaerts (mrdfuse) <https://github.com/mrdfuse>
+pkgname=somafm-player
+pkgver=1.0
+pkgrel=1
+pkgdesc="Native KDE (Kirigami) player for SomaFM internet radio"
+arch=('x86_64')
+url="https://github.com/mrdfuse/somafm-player"
+license=('MIT')
+depends=(
+  'qt6-base'
+  'qt6-declarative'
+  'qt6-multimedia'
+  'qt6-multimedia-ffmpeg'
+  'kirigami'
+  'qqc2-desktop-style'
+  'breeze-icons'
+  'hicolor-icon-theme'
+)
+
+# Builds from the checkout this PKGBUILD lives in, so local changes are
+# picked up without having to push or tag first.
+prepare() {
+  rm -rf "$srcdir/$pkgname"
+  mkdir -p "$srcdir/$pkgname"
+  cd "$startdir/.."
+  cp -r somafm-player.pro resources.qrc src qml data README.md LICENSE "$srcdir/$pkgname/"
+}
+
+build() {
+  mkdir -p "$srcdir/$pkgname/build"
+  cd "$srcdir/$pkgname/build"
+  qmake6 PREFIX=/usr ../somafm-player.pro
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname/build"
+  make INSTALL_ROOT="$pkgdir" install
+  install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 ../README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+}
