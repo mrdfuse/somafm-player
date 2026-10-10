@@ -5,6 +5,6 @@
         <file>qml/ChannelDelegate.qml</file>
         <file>qml/ChannelPage.qml</file>
         <file>qml/PlayerBar.qml</file>
-        <file>data/org.somafm.player.svg</file>
+        <file>data/io.github.mrdfuse.lighthugger.svg</file>
     </qresource>
 </RCC>

@@ -26,8 +26,8 @@ public:
     bool canQuit() const { return true; }
     bool canRaise() const { return true; }
     bool hasTrackList() const { return false; }
-    QString identity() const { return QStringLiteral("SomaFM"); }
-    QString desktopEntry() const { return QStringLiteral("org.somafm.player"); }
+    QString identity() const { return QStringLiteral("Lighthugger"); }
+    QString desktopEntry() const { return QStringLiteral("io.github.mrdfuse.lighthugger"); }
     QStringList supported() const { return {}; }
 
 public Q_SLOTS:

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Lighthugger
+GenericName=Internet Radio
+Comment=Drift through the SomaFM radio stations
+Exec=lighthugger %U
+Icon=io.github.mrdfuse.lighthugger
+Categories=Qt;KDE;AudioVideo;Audio;Player;
+Keywords=radio;stream;music;somafm;ambient;
+StartupWMClass=io.github.mrdfuse.lighthugger

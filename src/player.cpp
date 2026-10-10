@@ -190,7 +190,7 @@ void Player::play(const QString &id)
 
     const QUrl pls = playlistUrl();
     QNetworkRequest req(pls);
-    req.setHeader(QNetworkRequest::UserAgentHeader, QStringLiteral("somafm-player/1.0 (KDE)"));
+    req.setHeader(QNetworkRequest::UserAgentHeader, QStringLiteral("Lighthugger/1.0 (KDE; +https://github.com/mrdfuse/lighthugger)"));
     req.setTransferTimeout(15000);
     QNetworkReply *reply = m_nam->get(req);
     const quint64 gen = m_generation;

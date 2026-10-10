@@ -1,7 +1,13 @@
-# SomaFM Player for KDE
+# Lighthugger
+
+<img src="data/io.github.mrdfuse.lighthugger.svg" width="96" align="right" alt="">
 
 A native Qt 6 / Kirigami desktop player for [SomaFM](https://somafm.com/) internet radio.
 No browser engine involved.
+
+Named after the lighthuggers from Alastair Reynolds' *Revelation Space*: vast ships
+that drift for years just below the speed of light. Made for long stretches of
+Drone Zone, Deep Space One and Space Station Soma.
 
 > Unofficial app, not affiliated with SomaFM. SomaFM is listener-supported —
 > please consider [supporting them](https://somafm.com/support/).
@@ -20,8 +26,8 @@ No browser engine involved.
 
 ## Install (Arch, CachyOS, EndeavourOS, …)
 
-    git clone https://github.com/mrdfuse/somafm-player.git
-    cd somafm-player/packaging
+    git clone https://github.com/mrdfuse/lighthugger.git
+    cd lighthugger/packaging
     makepkg -si
 
 Updating: `git pull`, then run `makepkg -si` again (bump `pkgver` or `pkgrel` in the
@@ -34,14 +40,14 @@ Needs Qt 6 (base, declarative, multimedia), Kirigami and qqc2-desktop-style.
     mkdir build && cd build
     qmake6 ..            # optional: PREFIX=/usr (default is ~/.local)
     make -j$(nproc)
-    ./somafm-player      # or: make install
+    ./lighthugger        # or: make install
 
-Run `somafm-player [station-id]` to start playing a station right away
-(for example `somafm-player groovesalad`).
+Run `lighthugger [station-id]` to start playing a station right away
+(for example `lighthugger dronezone`).
 
 Shortcuts: Ctrl+Space play/stop, Ctrl+←/→ previous/next station, Ctrl+F search.
 
-Favorites and settings live in `~/.config/somafm-player/somafm-player.conf`.
+Favorites and settings live in `~/.config/lighthugger/lighthugger.conf`.
 
 ## License
 

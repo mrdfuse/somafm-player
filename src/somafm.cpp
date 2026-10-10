@@ -16,7 +16,7 @@ static QNetworkRequest apiRequest(const QUrl &url)
 {
     QNetworkRequest req(url);
     req.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::AlwaysNetwork);
-    req.setHeader(QNetworkRequest::UserAgentHeader, QStringLiteral("somafm-player/1.0 (KDE)"));
+    req.setHeader(QNetworkRequest::UserAgentHeader, QStringLiteral("Lighthugger/1.0 (KDE; +https://github.com/mrdfuse/lighthugger)"));
     req.setTransferTimeout(15000);
     return req;
 }

@@ -1,10 +1,12 @@
 # Maintainer: Nicolas Mommaerts (mrdfuse) <https://github.com/mrdfuse>
-pkgname=somafm-player
+pkgname=lighthugger
 pkgver=1.0
 pkgrel=1
 pkgdesc="Native KDE (Kirigami) player for SomaFM internet radio"
+conflicts=('somafm-player')
+replaces=('somafm-player')
 arch=('x86_64')
-url="https://github.com/mrdfuse/somafm-player"
+url="https://github.com/mrdfuse/lighthugger"
 license=('MIT')
 depends=(
   'qt6-base'
@@ -23,13 +25,13 @@ prepare() {
   rm -rf "$srcdir/$pkgname"
   mkdir -p "$srcdir/$pkgname"
   cd "$startdir/.."
-  cp -r somafm-player.pro resources.qrc src qml data README.md LICENSE "$srcdir/$pkgname/"
+  cp -r lighthugger.pro resources.qrc src qml data README.md LICENSE "$srcdir/$pkgname/"
 }
 
 build() {
   mkdir -p "$srcdir/$pkgname/build"
   cd "$srcdir/$pkgname/build"
-  qmake6 PREFIX=/usr ../somafm-player.pro
+  qmake6 PREFIX=/usr ../lighthugger.pro
   make
 }
 

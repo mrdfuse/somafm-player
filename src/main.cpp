@@ -10,20 +10,31 @@
 #include <QIcon>
 #include <QQmlApplicationEngine>
 #include <QQuickStyle>
+#include <QSettings>
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    QApplication::setOrganizationName(QStringLiteral("somafm-player"));
-    QApplication::setApplicationName(QStringLiteral("somafm-player"));
-    QApplication::setApplicationDisplayName(QStringLiteral("SomaFM"));
+    QApplication::setOrganizationName(QStringLiteral("lighthugger"));
+    QApplication::setApplicationName(QStringLiteral("lighthugger"));
+    QApplication::setApplicationDisplayName(QStringLiteral("Lighthugger"));
     QApplication::setApplicationVersion(QStringLiteral("1.0"));
-    QApplication::setDesktopFileName(QStringLiteral("org.somafm.player"));
-    QApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("org.somafm.player"),
-                                                 QIcon(QStringLiteral(":/data/org.somafm.player.svg"))));
+    QApplication::setDesktopFileName(QStringLiteral("io.github.mrdfuse.lighthugger"));
+    QApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("io.github.mrdfuse.lighthugger"),
+                                                 QIcon(QStringLiteral(":/data/io.github.mrdfuse.lighthugger.svg"))));
+
+    // Carry favorites and settings over from when the app was called somafm-player.
+    {
+        QSettings settings;
+        if (settings.allKeys().isEmpty()) {
+            QSettings old(QStringLiteral("somafm-player"), QStringLiteral("somafm-player"));
+            for (const QString &key : old.allKeys())
+                settings.setValue(key, old.value(key));
+        }
+    }
 
     QCommandLineParser parser;
-    parser.setApplicationDescription(QStringLiteral("Listen to SomaFM radio stations"));
+    parser.setApplicationDescription(QStringLiteral("Lighthugger: a player for SomaFM radio stations"));
     parser.addHelpOption();
     parser.addVersionOption();
     parser.addPositionalArgument(QStringLiteral("station"), QStringLiteral("Station id to start playing, e.g. groovesalad"));
@@ -40,7 +51,7 @@ int main(int argc, char *argv[])
     if (!registerMpris(&player)) {
         // Already running: bring the existing window to the front instead.
         QDBusConnection::sessionBus().call(QDBusMessage::createMethodCall(
-            QStringLiteral("org.mpris.MediaPlayer2.somafm"), QStringLiteral("/org/mpris/MediaPlayer2"),
+            QStringLiteral("org.mpris.MediaPlayer2.lighthugger"), QStringLiteral("/org/mpris/MediaPlayer2"),
             QStringLiteral("org.mpris.MediaPlayer2"), QStringLiteral("Raise")));
         return 0;
     }

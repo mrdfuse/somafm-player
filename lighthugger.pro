@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = somafm-player
+TARGET = lighthugger
 QT += core gui widgets network multimedia qml quick quickcontrols2 dbus
 CONFIG += c++17
 
@@ -9,8 +9,8 @@ RESOURCES += resources.qrc
 
 isEmpty(PREFIX): PREFIX = $$(HOME)/.local
 target.path = $$PREFIX/bin
-desktop.files = data/org.somafm.player.desktop
+desktop.files = data/io.github.mrdfuse.lighthugger.desktop
 desktop.path = $$PREFIX/share/applications
-icon.files = data/org.somafm.player.svg
+icon.files = data/io.github.mrdfuse.lighthugger.svg
 icon.path = $$PREFIX/share/icons/hicolor/scalable/apps
 INSTALLS += target desktop icon

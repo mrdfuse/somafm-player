@@ -49,7 +49,7 @@ QVariantMap MprisPlayer::metadata() const
     const QString station = ch.value(QStringLiteral("title")).toString();
     QVariantMap md;
     md[QStringLiteral("mpris:trackid")] = QVariant::fromValue(
-        QDBusObjectPath(QStringLiteral("/org/somafm/player/station/") + m_player->channelId()));
+        QDBusObjectPath(QStringLiteral("/io/github/mrdfuse/lighthugger/station/") + m_player->channelId()));
     md[QStringLiteral("xesam:title")] = m_player->title().isEmpty() ? station : m_player->title();
     if (!m_player->artist().isEmpty())
         md[QStringLiteral("xesam:artist")] = QStringList{m_player->artist()};
@@ -108,7 +108,7 @@ bool registerMpris(Player *player)
     QDBusConnection bus = QDBusConnection::sessionBus();
     if (!bus.isConnected())
         return true; // No session bus: run without media-key integration.
-    if (!bus.registerService(QStringLiteral("org.mpris.MediaPlayer2.somafm")))
+    if (!bus.registerService(QStringLiteral("org.mpris.MediaPlayer2.lighthugger")))
         return false;
     auto *object = new QObject(player);
     new MprisRoot(object, player);
